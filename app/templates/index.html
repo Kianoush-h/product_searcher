@@ -1,0 +1,70 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Search App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Product Search App</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="image_file" accept="image/*">
+        <input type="submit" value="Search">
+    </form>
+    {% if result %}
+    <h2>API Response:</h2>
+    <pre>{{ result | tojson }}</pre>
+    {% endif %}
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
