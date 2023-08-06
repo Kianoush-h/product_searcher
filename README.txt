@@ -1,86 +1,76 @@
-Certainly! Here's an example of a README.md file that you can use for your GitHub repository for the project:
+Of course! Here's a sample README file that you can use for your GitHub project. Feel free to modify and customize it according to your project details:
 
 ```markdown
-# Product Search Web App
+# Image Search Web App
 
-This is a simple web application that allows users to upload a picture of a product and retrieves information about stores that sell the product along with their prices. The app uses the Google Custom Search JSON API to perform image searches.
+![Web App Screenshot](screenshot.png)
 
-## Table of Contents
-
-- [Features](#features)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+A Flask web application that allows users to upload an image, perform a reverse image search, and display search results in a tabular format.
 
 ## Features
 
-- Upload an image of a product to search for stores selling the product.
-- Retrieve a list of stores and their corresponding prices.
-- Simple and user-friendly web interface.
+- Upload an image from your local device.
+- Perform a reverse image search using Google Lens.
+- Display search results including source, link, and price (if available).
+- Clickable links to view the original item.
 
-## Getting Started
+## Installation
 
-### Prerequisites
-
-- Python 3.x
-- Google API Key
-- Google Custom Search Engine ID
-
-### Installation
-
-1. Clone the repository:
+1. Clone this repository to your local machine:
 
    ```bash
-   git clone https://github.com/yourusername/product-search-app.git
-   cd product-search-app
+   git clone https://github.com/YourUsername/Image-Search-Web-App.git
    ```
 
-2. Create a virtual environment and activate it:
+2. Navigate to the project directory:
 
    ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   cd Image-Search-Web-App
    ```
 
-3. Install the required packages:
+3. Install the required Python packages using `pip`:
 
    ```bash
    pip install -r requirements.txt
    ```
 
-## Usage
-
-1. Set up your Google API Key and Custom Search Engine ID in `app.py`:
-
-   ```python
-   api_key = 'YOUR_GOOGLE_API_KEY'
-   cx = 'YOUR_CUSTOM_SEARCH_ENGINE_ID'
-   ```
-
-2. Run the Flask app:
+4. Run the Flask application:
 
    ```bash
    python app.py
    ```
 
-3. Open a web browser and navigate to `http://localhost:5000`.
+5. Open your web browser and go to `http://127.0.0.1:5000` to access the web app.
 
-4. Upload an image of the product you want to search for.
+## Usage
 
-5. The app will display a list of stores and their prices for the product.
+1. On the web app, click the "Choose Image" button to select an image from your local device.
 
-## Contributing
+2. Click the "Search" button to initiate the reverse image search using Google Lens.
 
-Contributions are welcome! If you find any issues or have suggestions for improvements, please feel free to create a pull request or open an issue.
+3. Once the search results are displayed, you can see the source, link, and price (if available) of the matching items. Click on the links to view the original items in new tabs.
+
+## Screenshots
+
+![Web App Screenshot](screenshot.png)
+
+## Credits
+
+- Developed by [Your Name](https://github.com/YourUsername)
+- Google Lens integration using [serpapi](https://github.com/serpapi/google-search-results-python) by [serpapi](https://github.com/serpapi)
+
+## Contact
+
+For inquiries or support, please contact:
+
+- Email: your.email@example.com
+- LinkedIn: [Your LinkedIn Profile](https://www.linkedin.com/in/yourusername/)
 
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
 ```
 
-Make sure to replace `'YOUR_GOOGLE_API_KEY'` and `'YOUR_CUSTOM_SEARCH_ENGINE_ID'` with your actual API key and custom search engine ID.
+Replace the placeholders (such as `YourUsername`, `Your Name`, `your.email@example.com`, and others) with your actual details. You can also add more sections, such as a "Contributing" section or more detailed usage instructions, if needed.
 
-Additionally, modify the URLs, repository name, and other details as needed to match your GitHub repository and project structure.
+Don't forget to include a screenshot of your web app (`screenshot.png` in the example) to showcase its appearance. You can add this screenshot to your repository's root directory.
