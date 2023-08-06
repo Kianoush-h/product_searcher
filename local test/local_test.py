@@ -75,7 +75,9 @@ if url != "":
     
     df = pd.DataFrame(name_price_url)
     filtered_df = df[df['link'].notnull()]
+    filtered_df = df[df['currency'].notnull()]
     filtered_df = filtered_df.sort_values(by='price')
     filtered_df = filtered_df.reset_index()
+    filtered_df = filtered_df[["source","link","price"]]
 
 

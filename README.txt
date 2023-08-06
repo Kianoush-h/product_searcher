@@ -1,7 +1,6 @@
-Of course! Here's a sample README file that you can use for your GitHub project. Feel free to modify and customize it according to your project details:
-
-```markdown
 # Image Search Web App
+
+https://watch.screencastify.com/v/XsNcWTvso3Qup1Hdjh4L
 
 ![Web App Screenshot](screenshot.png)
 
