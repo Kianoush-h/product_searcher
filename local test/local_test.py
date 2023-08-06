@@ -28,7 +28,8 @@ def upload_image_to_imgbb(image_path, api_key):
 
 api_key = "fe4095abd2b2d313d039c4d7e28fb628"
 # image_path = "pen.jpg"
-image_path = "swim.png"
+# image_path = "swim.png"
+image_path = "D:\GitHub\product_searcher\local test\pen.jpg"
 
 
 

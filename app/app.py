@@ -11,73 +11,78 @@ Email: haratiank2@gmail.com
 """
 
 
-
-
 from flask import Flask, render_template, request
+from serpapi import GoogleSearch
+import pandas as pd
 import requests
+import os
 
 app = Flask(__name__)
+
+def upload_image_to_imgbb(image_path, api_key):
+    url = "https://api.imgbb.com/1/upload"
+    files = {"image": (image_path, open(image_path, "rb"))}
+    params = {"key": api_key}
+    
+    response = requests.post(url, files=files, params=params)
+    data = response.json()
+    
+    return data.get("data", {}).get("url")
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        image_file = request.files['image_file']
-        api_key = 'AIzaSyAYzJh5GO_NXQUb0LNl5y1zWhrqoanmPpE'
-        cx = '24182732d347e4550'
+        try:
+            file = request.files['file']
+            if file:
+                image_filename = file.filename
+                image_path = os.path.join(os.getcwd(), image_filename)
+                
+                api_key = "fe4095abd2b2d313d039c4d7e28fb628"
+                url = upload_image_to_imgbb(image_path, api_key)
+                
+                
+                if url:
+                    params = {
+                        "engine": "google_lens",
+                        "url": url,
+                        "no_cache": "true",
+                        "api_key": "21821398356fa120a0910724c0df63944cffc73bff0d13f4db1485ae1c75d3d4"
+                    }
 
-        result = search_product_image(image_file, api_key, cx)
-        
-        # Process result to extract store and price information
+                    search = GoogleSearch(params)
+                    results = search.get_dict()
 
-        return render_template('index.html', results=extract_results)
+                    name_price_url = []
 
-    return render_template('index.html', results=None)
+                    important_keys = ["source", "title", "price", "thumbnail"]
 
-def search_product_image(image_file, api_key, cx):
-    base_url = "https://www.googleapis.com/customsearch/v1"
-    params = {
-        "key": api_key,
-        "cx": cx,
-        "searchType": "image",
-    }
+                    if results['search_metadata']['status'] != "Success":
+                        print("no item found")
+                    else:
+                        for item in results['visual_matches']:
+                            name_price_url.append({
+                                "source": item.get('source'),
+                                "title": item.get('title'),
+                                "link": item.get('link'),
+                                "price": item['price'].get('extracted_value') if 'price' in item else None,
+                                "currency": item['price'].get('currency') if 'price' in item else None,
+                                "thumbnail": item.get('thumbnail')
+                            })
 
+                    df = pd.DataFrame(name_price_url)
+                    filtered_df = df[df['link'].notnull()]
+                    filtered_df = filtered_df.sort_values(by='price')
+                    filtered_df = filtered_df.reset_index()
 
+                    return render_template('index.html', data=filtered_df.to_html(index=False))
+                else:
+                    return "Error uploading image to imgbb.com"
 
-    files = {"imgFile": (image_file.filename, image_file.stream, image_file.content_type)}
-    print("Filename:", image_file.filename)
-    print("Content-Type:", image_file.content_type)
+        except Exception as e:
+            return f"Error: {e}"
 
-    headers = {"Content-Type": "multipart/form-data"}
-    response = requests.post(base_url, params=params, files=files, headers=headers)
-    
-    # response = requests.post(base_url, params=params, files=files)
-    print("*"*10)
-    print(response.text)  # Print the response content for debugging
-    print("*"*10)
-    try:
-        data = response.json()
-    except requests.exceptions.JSONDecodeError as e:
-        print("Error decoding JSON:", e)
-
-
-
-    return data
-
-
-
-def extract_results(data):
-    items = data.get('items', [])
-    extracted_results = []
-
-    for item in items:
-        title = item.get('title', '')
-        link = item.get('link', '')
-        extracted_results.append((title, link))
-
-    return extracted_results
-
+    return render_template('index.html', data="")
 
 if __name__ == '__main__':
     app.run()
-
-
