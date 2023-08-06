@@ -21,14 +21,15 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        image_url = request.form['image_url']
+        image_file = request.files['image_file']
         api_key = 'AIzaSyAYzJh5GO_NXQUb0LNl5y1zWhrqoanmPpE'
         cx = '24182732d347e4550'
 
-        result = search_product_image(image_url, api_key, cx)
+        result = search_product_image(image_file, api_key, cx)
+        
         # Process result to extract store and price information
 
-        return render_template('index.html', results=extracted_results)
+        return render_template('index.html', results=extract_results)
 
     return render_template('index.html', results=None)
 
@@ -40,68 +41,43 @@ def search_product_image(image_file, api_key, cx):
         "searchType": "image",
     }
 
-    files = {"imgFile": (image_file.filename, image_file.stream, image_file.content_type)}
 
-    response = requests.post(base_url, params=params, files=files)
-    data = response.json()
+
+    files = {"imgFile": (image_file.filename, image_file.stream, image_file.content_type)}
+    print("Filename:", image_file.filename)
+    print("Content-Type:", image_file.content_type)
+
+    headers = {"Content-Type": "multipart/form-data"}
+    response = requests.post(base_url, params=params, files=files, headers=headers)
+    
+    # response = requests.post(base_url, params=params, files=files)
+    print("*"*10)
+    print(response.text)  # Print the response content for debugging
+    print("*"*10)
+    try:
+        data = response.json()
+    except requests.exceptions.JSONDecodeError as e:
+        print("Error decoding JSON:", e)
+
+
 
     return data
 
 
 
 def extract_results(data):
-    # Implement the result extraction here
-    print("extract_results")
+    items = data.get('items', [])
+    extracted_results = []
+
+    for item in items:
+        title = item.get('title', '')
+        link = item.get('link', '')
+        extracted_results.append((title, link))
+
+    return extracted_results
+
 
 if __name__ == '__main__':
     app.run()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
