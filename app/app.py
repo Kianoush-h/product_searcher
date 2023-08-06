@@ -29,6 +29,9 @@ def upload_image_to_imgbb(image_path, api_key):
     
     return data.get("data", {}).get("url")
 
+
+
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
@@ -36,7 +39,9 @@ def index():
             file = request.files['file']
             if file:
                 image_filename = file.filename
-                image_path = os.path.join(os.getcwd(), image_filename)
+                # image_path = os.path.join(os.getcwd(), image_filename)
+                image_path = os.path.join(image_folder, image_filename)
+                file.save(image_path)
                 
                 api_key = "fe4095abd2b2d313d039c4d7e28fb628"
                 url = upload_image_to_imgbb(image_path, api_key)
@@ -72,6 +77,7 @@ def index():
 
                     df = pd.DataFrame(name_price_url)
                     filtered_df = df[df['link'].notnull()]
+                    filtered_df = df[df['currency'].notnull()]
                     filtered_df = filtered_df.sort_values(by='price')
                     filtered_df = filtered_df.reset_index()
 
@@ -85,4 +91,7 @@ def index():
     return render_template('index.html', data="")
 
 if __name__ == '__main__':
+    image_folder = "uploads"
+    if not os.path.exists(image_folder):
+        os.makedirs(image_folder)
     app.run()
