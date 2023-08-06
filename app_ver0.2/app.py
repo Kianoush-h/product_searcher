@@ -52,7 +52,7 @@ def index():
                         "engine": "google_lens",
                         "url": url,
                         "no_cache": "true",
-                        "api_key": "21821398356fa120a0910724c0df63944cffc73bff0d13f4db1485ae1c75d3d4"
+                        "api_key": "21821398356fa120a0910724c0df63944cffc73bff0d13f4db1485ae1c75d3d4",
                     }
 
                     search = GoogleSearch(params)
