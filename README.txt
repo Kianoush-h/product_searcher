@@ -1,75 +1,48 @@
 # Image Search Web App
 
-https://watch.screencastify.com/v/XsNcWTvso3Qup1Hdjh4L
-
-![Web App Screenshot](screenshot.png)
-
-A Flask web application that allows users to upload an image, perform a reverse image search, and display search results in a tabular format.
+This is a simple Flask-based web application that allows users to upload an image, perform a Google Lens search, and display search results in a tabular format. The search results include the source, link, and price of related items.
 
 ## Features
 
 - Upload an image from your local device.
-- Perform a reverse image search using Google Lens.
-- Display search results including source, link, and price (if available).
-- Clickable links to view the original item.
+- Utilize Google Lens to search for similar items.
+- Display search results with source, link, and price in a tabular format.
+- Clickable links to view the original items.
 
-## Installation
+## Demo
 
-1. Clone this repository to your local machine:
-
-   ```bash
-   git clone https://github.com/YourUsername/Image-Search-Web-App.git
-   ```
-
-2. Navigate to the project directory:
-
-   ```bash
-   cd Image-Search-Web-App
-   ```
-
-3. Install the required Python packages using `pip`:
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. Run the Flask application:
-
-   ```bash
-   python app.py
-   ```
-
-5. Open your web browser and go to `http://127.0.0.1:5000` to access the web app.
+Watch the demo video to see the app in action: [Watch Demo Video](https://watch.screencastify.com/v/XsNcWTvso3Qup1Hdjh4L)
 
 ## Usage
 
-1. On the web app, click the "Choose Image" button to select an image from your local device.
+1. Clone the repository to your local machine.
+2. Install the required Python packages using `pip install -r requirements.txt`.
+3. Run the Flask app by executing `python app.py`.
+4. Access the web app in your browser at `http://localhost:5000`.
+5. Upload an image and click the "Search" button.
+6. View the search results with source, link, and price.
 
-2. Click the "Search" button to initiate the reverse image search using Google Lens.
+## Dependencies
 
-3. Once the search results are displayed, you can see the source, link, and price (if available) of the matching items. Click on the links to view the original items in new tabs.
+- Flask
+- pandas
+- requests
 
-## Screenshots
+## File Structure
 
-![Web App Screenshot](screenshot.png)
-
-## Credits
-
-- Developed by [Your Name](https://github.com/YourUsername)
-- Google Lens integration using [serpapi](https://github.com/serpapi/google-search-results-python) by [serpapi](https://github.com/serpapi)
+- `app.py`: Main Flask application.
+- `index.html`: HTML template for rendering the web page.
+- `style.css`: CSS file for styling the web page.
+- `requirements.txt`: List of required Python packages.
+- `uploads/`: Folder to store uploaded images.
+- `results.csv`: CSV file containing search results data.
 
 ## Contact
 
-For inquiries or support, please contact:
+- Author: [Your Name]
+- GitHub: [Your GitHub Profile](https://github.com/yourusername)
+- YouTube: [Your YouTube Channel](https://www.youtube.com/channel/yourchannel)
+- LinkedIn: [Your LinkedIn Profile](https://www.linkedin.com/in/yourprofile)
 
-- Email: your.email@example.com
-- LinkedIn: [Your LinkedIn Profile](https://www.linkedin.com/in/yourusername/)
+For any inquiries or feedback, please reach out to me at [Your Email](mailto:youremail@example.com).
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-```
-
-Replace the placeholders (such as `YourUsername`, `Your Name`, `your.email@example.com`, and others) with your actual details. You can also add more sections, such as a "Contributing" section or more detailed usage instructions, if needed.
-
-Don't forget to include a screenshot of your web app (`screenshot.png` in the example) to showcase its appearance. You can add this screenshot to your repository's root directory.
