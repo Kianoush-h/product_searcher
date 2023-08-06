@@ -39,10 +39,9 @@ Watch the demo video to see the app in action: [Watch Demo Video](https://watch.
 
 ## Contact
 
-- Author: [Your Name]
-- GitHub: [Your GitHub Profile](https://github.com/yourusername)
-- YouTube: [Your YouTube Channel](https://www.youtube.com/channel/yourchannel)
-- LinkedIn: [Your LinkedIn Profile](https://www.linkedin.com/in/yourprofile)
+- Author: Kianoush Haratiannejadi
+- GitHub: https://github.com/Kianoush-h
+- YouTube: https://www.youtube.com/@kianoushharatiannejadi5321
+- LinkedIn: https://www.linkedin.com/in/kianoush-haratiannejadi/
 
-For any inquiries or feedback, please reach out to me at [Your Email](mailto:youremail@example.com).
-
+For any inquiries or feedback, please reach out to me at haratiank2@gmail.com
