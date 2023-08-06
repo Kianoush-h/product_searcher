@@ -1,5 +1,3 @@
-Of course! Here's a sample README file that you can use for your GitHub project. Feel free to modify and customize it according to your project details:
-
 ```markdown
 # Image Search Web App
 
