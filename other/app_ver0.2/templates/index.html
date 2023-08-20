@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Image Search Web App</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Image Search Web App</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <label class="custom-file-upload">
+                <input type="file" name="file" accept="image/*" required>
+                Choose Image
+            </label>
+            <button type="submit">Search</button>
+        </form>
+        {% if data %}
+        <div class="results">
+            <h2>Search Results</h2>
+            <p>Selected Image: {{ image }}</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Source</th>
+                        <th>Link</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in data %}
+                    <tr>
+                        <td>{{ item.source }}</td>
+                        <td><a href="{{ item.link }}" target="_blank">View</a></td>
+                        <td>{{ item.price }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

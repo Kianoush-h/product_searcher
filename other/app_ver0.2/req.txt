@@ -1,0 +1,9 @@
+Flask==1.1.4
+Flask-Caching==1.10.1
+Flask-RESTful==0.3.9
+flask-restful-swagger==0.20.2
+numpy==1.19.5
+pandas==1.1.5
+pytz==2022.7.1
+requests==2.27.1
+google-search-results
