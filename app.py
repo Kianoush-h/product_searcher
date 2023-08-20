@@ -97,4 +97,4 @@ if __name__ == '__main__':
     image_folder = "uploads"
     if not os.path.exists(image_folder):
         os.makedirs(image_folder)
-    app.run()
+    app.run(debug=True)

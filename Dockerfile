@@ -12,4 +12,7 @@ RUN apt install python3-pip -y
 RUN pip3 install --upgrade pip
 RUN pip3 install -r req.txt
 
-ENTRYPOINT ["python3", "app.py"]
+ENV FLASK_DEBUG=1
+EXPOSE 5000
+
+CMD ["flask","run","--host=0.0.0.0"]
